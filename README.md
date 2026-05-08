@@ -8,9 +8,11 @@ It replicates the Intruder workflow from the terminal: parse a raw `.req` file e
 
 ## Requirements
 
-- Go 1.22+
+- Go 1.24.2+
 
 ## Build
+
+Dependencies are managed with Go modules and downloaded automatically on first build — no separate `go mod download` step needed.
 
 ```bash
 go build -o belch ./cmd/belch
