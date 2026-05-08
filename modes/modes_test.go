@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 
-	"fuzzer/detector"
-	"fuzzer/modes"
-	"fuzzer/wordlist"
+	"belch/detector"
+	"belch/modes"
+	"belch/wordlist"
 )
 
 // ── helpers ───────────────────────────────────────────────────────────────────

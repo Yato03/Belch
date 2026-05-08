@@ -1,4 +1,4 @@
-package ui_test
+﻿package ui_test
 
 import (
 	"strings"
@@ -7,7 +7,7 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"fuzzer/ui"
+	"belch/ui"
 )
 
 func newTestModel(total int, ch <-chan ui.ResultMsg) ui.Model {
@@ -26,7 +26,7 @@ func closedCh() <-chan ui.ResultMsg {
 	return ch
 }
 
-// ── Initial state ─────────────────────────────────────────────────────────────
+// â”€â”€ Initial state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func TestNew_InitialState(t *testing.T) {
 	m := newTestModel(10, closedCh())
@@ -42,7 +42,7 @@ func TestNew_NilResults(t *testing.T) {
 	}
 }
 
-// ── StateReady → StateRunning ─────────────────────────────────────────────────
+// â”€â”€ StateReady â†’ StateRunning â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func TestEnter_TransitionsToRunning(t *testing.T) {
 	ch := make(chan ui.ResultMsg)
@@ -56,7 +56,7 @@ func TestEnter_TransitionsToRunning(t *testing.T) {
 	}
 }
 
-// ── ResultMsg accumulation ────────────────────────────────────────────────────
+// â”€â”€ ResultMsg accumulation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func TestResultMsg_Appended(t *testing.T) {
 	ch := make(chan ui.ResultMsg, 1)
@@ -78,7 +78,7 @@ func TestResultMsg_Appended(t *testing.T) {
 	}
 }
 
-// ── DoneMsg ───────────────────────────────────────────────────────────────────
+// â”€â”€ DoneMsg â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func TestDoneMsg_TransitionsToDone(t *testing.T) {
 	ch := make(chan ui.ResultMsg)
@@ -93,7 +93,7 @@ func TestDoneMsg_TransitionsToDone(t *testing.T) {
 	}
 }
 
-// ── Export state ──────────────────────────────────────────────────────────────
+// â”€â”€ Export state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func TestExportKey_OpensExportMenu(t *testing.T) {
 	m := newTestModel(0, closedCh())
@@ -127,7 +127,7 @@ func TestExportEsc_ReturnsToDone(t *testing.T) {
 	}
 }
 
-// ── View ──────────────────────────────────────────────────────────────────────
+// â”€â”€ View â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func TestView_Ready_NonEmpty(t *testing.T) {
 	m := newTestModel(10, closedCh())
@@ -156,7 +156,7 @@ func TestView_Export_NonEmpty(t *testing.T) {
 	}
 }
 
-// ── State ordering ────────────────────────────────────────────────────────────
+// â”€â”€ State ordering â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func TestStateValues_AreOrdered(t *testing.T) {
 	states := []ui.State{

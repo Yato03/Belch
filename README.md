@@ -1,4 +1,4 @@
-# Go Fuzzer
+# Belch
 
 **A fast, terminal-native alternative to Burp Suite Community's Intruder.**
 
@@ -13,19 +13,19 @@ It replicates the Intruder workflow from the terminal: parse a raw `.req` file e
 ## Build
 
 ```bash
-go build -o fuzzer ./cmd/fuzzer
+go build -o belch ./cmd/belch
 ```
 
 On Windows:
 
 ```bash
-go build -o fuzzer.exe ./cmd/fuzzer
+go build -o belch.exe ./cmd/belch
 ```
 
 ## Usage
 
 ```
-fuzzer -req <file.req> -wordlist <list.txt> [options]
+belch -req <file.req> -wordlist <list.txt> [options]
 ```
 
 ### Flags
@@ -59,7 +59,7 @@ Save it as `request.req`.
 ### Sniper — enumerate one field at a time
 
 ```bash
-fuzzer -req request.req -wordlist passwords.txt -mode sniper -url https://target.example.com
+belch -req request.req -wordlist passwords.txt -mode sniper -url https://target.example.com
 ```
 
 Output:
@@ -79,13 +79,13 @@ mode: sniper
 ### Battering Ram — same payload in all fields
 
 ```bash
-fuzzer -req request.req -wordlist wordlist.txt -mode battering-ram
+belch -req request.req -wordlist wordlist.txt -mode battering-ram
 ```
 
 ### Pitchfork — separate wordlist per field
 
 ```bash
-fuzzer -req request.req -wordlist users.txt,passwords.txt -mode pitchfork
+belch -req request.req -wordlist users.txt,passwords.txt -mode pitchfork
 ```
 
 Pairs `users.txt[i]` with `passwords.txt[i]` in lock-step. Stops when the shortest list is exhausted.
@@ -93,13 +93,13 @@ Pairs `users.txt[i]` with `passwords.txt[i]` in lock-step. Stops when the shorte
 ### Concurrent requests
 
 ```bash
-fuzzer -req request.req -wordlist wordlist.txt -threads 10
+belch -req request.req -wordlist wordlist.txt -threads 10
 ```
 
 ### Skip TLS verification (self-signed certs)
 
 ```bash
-fuzzer -req request.req -wordlist wordlist.txt -url https://target.local -skip-verify
+belch -req request.req -wordlist wordlist.txt -url https://target.local -skip-verify
 ```
 
 ## Attack mode comparison
@@ -119,12 +119,12 @@ go test ./...
 ## Project structure
 
 ```
-fuzzer/
-├── cmd/fuzzer/main.go   # entry point
+belch/
+├── cmd/belch/main.go    # entry point
 ├── parser/              # parse .req files into Request structs
 ├── detector/            # detect and inject § fuzz points
 ├── wordlist/            # load payload lists from files
 ├── modes/               # sniper, battering-ram, pitchfork
 ├── executor/            # send HTTP requests, capture responses
-└── ui/                  # state machine model for a TUI frontend
+└── ui/                  # Bubble Tea TUI (streaming results, filter, export)
 ```

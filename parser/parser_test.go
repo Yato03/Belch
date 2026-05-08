@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"fuzzer/parser"
+	"belch/parser"
 )
 
 // ── ParseRequestFromFile ────────────────────────────────────────────────────

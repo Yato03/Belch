@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"fuzzer/executor"
-	"fuzzer/parser"
+	"belch/executor"
+	"belch/parser"
 )
 
 func newReq(method, path string, headers map[string]string, body string) *parser.Request {

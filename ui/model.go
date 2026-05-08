@@ -284,7 +284,7 @@ func (m Model) View() string {
 func (m Model) viewReady() string {
 	var sb strings.Builder
 	sb.WriteString("\n")
-	sb.WriteString(styleTitle.Render("  fuzzer") + "\n\n")
+	sb.WriteString(styleTitle.Render("  Belch") + "\n\n")
 	sb.WriteString(fmt.Sprintf("  %s  %s\n",
 		styleGray.Render("target:"),
 		styleBold.Render(m.config.Target)))
@@ -313,7 +313,7 @@ func (m Model) renderHeader() string {
 	done := len(m.results)
 	progress := fmt.Sprintf("%d/%d", done, m.total)
 
-	left := styleTitle.Render("fuzzer") + "  " +
+	left := styleTitle.Render("Belch") + "  " +
 		styleGray.Render(m.config.Mode) + " · " +
 		styleGray.Render(m.config.Target)
 
@@ -444,13 +444,13 @@ func doExport(rows []ResultRow, format string) tea.Cmd {
 		)
 		switch format {
 		case "csv":
-			path = "fuzzer-results-" + ts + ".csv"
+			path = "belch-results-" + ts + ".csv"
 			err = ExportCSV(rows, path)
 		case "json":
-			path = "fuzzer-results-" + ts + ".json"
+			path = "belch-results-" + ts + ".json"
 			err = ExportJSON(rows, path)
 		case "txt":
-			path = "fuzzer-results-" + ts + ".txt"
+			path = "belch-results-" + ts + ".txt"
 			err = ExportText(rows, path)
 		}
 		return ExportMsg{Path: path, Err: err}

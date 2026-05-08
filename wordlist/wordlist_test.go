@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"fuzzer/wordlist"
+	"belch/wordlist"
 )
 
 // ── Load ────────────────────────────────────────────────────────────────────

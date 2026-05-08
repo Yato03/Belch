@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"fuzzer/detector"
+	"belch/detector"
 )
 
 // ── Detect ──────────────────────────────────────────────────────────────────

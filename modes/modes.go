@@ -4,8 +4,8 @@
 package modes
 
 import (
-	"fuzzer/detector"
-	"fuzzer/wordlist"
+	"belch/detector"
+	"belch/wordlist"
 )
 
 // Result holds one generated request for a single fuzzing iteration.

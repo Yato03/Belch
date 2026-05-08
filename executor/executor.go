@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"fuzzer/parser"
+	"belch/parser"
 )
 
 // Response holds the HTTP response captured after executing a request.

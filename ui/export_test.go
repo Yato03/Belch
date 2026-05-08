@@ -1,4 +1,4 @@
-package ui_test
+﻿package ui_test
 
 import (
 	"encoding/csv"
@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"fuzzer/ui"
+	"belch/ui"
 )
 
 var sampleRows = []ui.ResultRow{
@@ -61,7 +61,7 @@ func TestExportCSV_ErrorRow(t *testing.T) {
 	f, _ := os.Open(path)
 	defer f.Close()
 	records, _ := csv.NewReader(f).ReadAll()
-	// row 3 (index 3 in records) has Error set — status should be ERR
+	// row 3 (index 3 in records) has Error set â€” status should be ERR
 	if records[3][1] != "ERR" {
 		t.Errorf("error row status: got %q, want ERR", records[3][1])
 	}
